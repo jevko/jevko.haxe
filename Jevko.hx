@@ -9,8 +9,8 @@
     static var closer = "]";
 
     static public function parse(str: String): Jevko {
-        var parents = new List<Jevko>();
-        var parent: Jevko = {subjevkos: new List<Subjevko>()};
+        var parents = new Array<Jevko>();
+        var parent: Jevko = {subjevkos: []};
         var prefix = '';
         var h = 0;
         var isEscaped = false;
@@ -29,7 +29,7 @@
                 h = i + 1;
                 isEscaped = true;
             } else if (c == opener) {
-                var jevko: Jevko = {subjevkos: new List<Subjevko>()};
+                var jevko: Jevko = {subjevkos: []};
                 parent.subjevkos.push({
                     prefix: prefix + str.substring(h, i), 
                     jevko: jevko
@@ -89,11 +89,11 @@
         return ret + Jevko.escape(this.suffix);
     }
 
-    public var subjevkos: List<Subjevko>;
+    public var subjevkos: Array<Subjevko>;
     public var suffix: String;
 
     public inline function new(
-        subjevkos: List<Subjevko>, 
+        subjevkos: Array<Subjevko>, 
         suffix: String = ""
     ) {
         this.subjevkos = subjevkos;
