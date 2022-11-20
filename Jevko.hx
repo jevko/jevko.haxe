@@ -78,13 +78,10 @@
     }
 
     public function toString() {
-        var i = 0;
         var ret = "";
 
         for (sub in this.subjevkos) {
             ret += '${Jevko.escape(sub.prefix)}${opener}${sub.jevko}${closer}';
-
-            ++i;
         }
         return ret + Jevko.escape(this.suffix);
     }
